@@ -6,7 +6,7 @@
 /*   By: marudlof <marudlof@42.angouleme.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 11:47:13 by marudlof          #+#    #+#             */
-/*   Updated: 2026/09/23 18:28:18 by marudlof         ###   ########.fr       */
+/*   Updated: 2026/09/28 16:10:26 by marudlof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 #include <iostream>
-
-static const char*	yesNo(bool condition)
-{
-	if (condition)
-		return ("yes");
-	return ("no");
-}
 
 #define ZOO_SIZE 10
 
@@ -61,9 +54,6 @@ static void	testDeepCopyConstructor(void)
 	std::cout << std::endl;
 	std::cout << "original brain address: " << original.getBrain() << std::endl;
 	std::cout << "copy brain address    : " << copy.getBrain() << std::endl;
-	std::cout << "different brains      : "
-		<< yesNo(original.getBrain() != copy.getBrain())
-		<< std::endl;
 
 	copy.getBrain()->ideas[0] = "Ash";
 	std::cout << "after editing the copy, original ideas[0]: "
@@ -84,9 +74,6 @@ static void	testDeepCopyAssignment(void)
 	std::cout << std::endl;
 	std::cout << "original brain address: " << original.getBrain() << std::endl;
 	std::cout << "assigned brain address: " << assigned.getBrain() << std::endl;
-	std::cout << "different brains      : "
-		<< yesNo(original.getBrain() != assigned.getBrain())
-		<< std::endl;
 
 	assigned.getBrain()->ideas[0] = "Ronflex";
 	std::cout << "after editing the assigned one, original ideas[0]: "

@@ -6,7 +6,7 @@
 /*   By: marudlof <marudlof@42.angouleme.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 10:12:56 by marudlof          #+#    #+#             */
-/*   Updated: 2026/09/10 17:41:04 by marudlof         ###   ########.fr       */
+/*   Updated: 2026/09/28 16:37:09 by marudlof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(void)
 		const WrongAnimal*	i = new WrongCat();
 
 		std::cout << std::endl;
-		std::cout << i->getType() << " " << std::endl;
+		std::cout << i->getType() << std::endl;
 		i->makeSound();
 		meta->makeSound();
 

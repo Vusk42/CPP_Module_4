@@ -18,13 +18,6 @@
 #include "WrongCat.hpp"
 #include <iostream>
 
-static const char*	isDeep(bool condition)
-{
-	if (condition)
-		return ("yes");
-	return ("NO (shallow!)");
-}
-
 #define ZOO_SIZE 8
 
 static void	testSubjectMain(void)
@@ -76,9 +69,6 @@ static void	testDeepCopyConstructor(void)
 	std::cout << std::endl;
 	std::cout << "original brain address: " << original.getBrain() << std::endl;
 	std::cout << "copy brain address    : " << copy.getBrain() << std::endl;
-	std::cout << "different brains      : "
-		<< isDeep(original.getBrain() != copy.getBrain())
-		<< std::endl;
 	std::cout << "copy ideas[0]         : " << copy.getBrain()->ideas[0]
 		<< std::endl;
 
@@ -101,9 +91,6 @@ static void	testDeepCopyAssignment(void)
 	std::cout << std::endl;
 	std::cout << "original brain address: " << original.getBrain() << std::endl;
 	std::cout << "assigned brain address: " << assigned.getBrain() << std::endl;
-	std::cout << "different brains      : "
-		<< isDeep(original.getBrain() != assigned.getBrain())
-		<< std::endl;
 	std::cout << "assigned ideas[0]     : " << assigned.getBrain()->ideas[0]
 		<< std::endl;
 
