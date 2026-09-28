@@ -6,7 +6,7 @@
 /*   By: marudlof <marudlof@42.angouleme.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 11:47:13 by marudlof          #+#    #+#             */
-/*   Updated: 2026/09/10 17:43:56 by marudlof         ###   ########.fr       */
+/*   Updated: 2026/09/23 18:28:18 by marudlof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,14 @@
 #include "WrongCat.hpp"
 #include <iostream>
 
-#define ZOO_SIZE 8
-
-static void	testAbstract(void)
+static const char*	yesNo(bool condition)
 {
-	std::cout << "AAnimal is abstract: the two lines below do not compile."
-		<< std::endl;
-	std::cout << "  AAnimal  meta;" << std::endl;
-	std::cout << "  const AAnimal* meta = new AAnimal();" << std::endl;
-	std::cout << "Only Dog and Cat can be built, through an AAnimal*."
-		<< std::endl;
-
-	// AAnimal			meta;
-	// const AAnimal*	meta = new AAnimal();
+	if (condition)
+		return ("yes");
+	return ("no");
 }
+
+#define ZOO_SIZE 10
 
 static void	testZoo(void)
 {
@@ -59,7 +53,7 @@ static void	testDeepCopyConstructor(void)
 {
 	Dog	original;
 
-	original.getBrain()->ideas[0] = "I want a bone";
+	original.getBrain()->ideas[0] = "Red";
 
 	std::cout << std::endl;
 	Dog	copy(original);
@@ -68,10 +62,10 @@ static void	testDeepCopyConstructor(void)
 	std::cout << "original brain address: " << original.getBrain() << std::endl;
 	std::cout << "copy brain address    : " << copy.getBrain() << std::endl;
 	std::cout << "different brains      : "
-		<< (original.getBrain() != copy.getBrain() ? "yes" : "NO (shallow!)")
+		<< yesNo(original.getBrain() != copy.getBrain())
 		<< std::endl;
 
-	copy.getBrain()->ideas[0] = "I want a ball";
+	copy.getBrain()->ideas[0] = "Ash";
 	std::cout << "after editing the copy, original ideas[0]: "
 		<< original.getBrain()->ideas[0] << std::endl;
 	std::cout << std::endl;
@@ -82,7 +76,7 @@ static void	testDeepCopyAssignment(void)
 	Cat	original;
 	Cat	assigned;
 
-	original.getBrain()->ideas[0] = "The box is mine";
+	original.getBrain()->ideas[0] = "DeepCopy";
 
 	std::cout << std::endl;
 	assigned = original;
@@ -91,10 +85,10 @@ static void	testDeepCopyAssignment(void)
 	std::cout << "original brain address: " << original.getBrain() << std::endl;
 	std::cout << "assigned brain address: " << assigned.getBrain() << std::endl;
 	std::cout << "different brains      : "
-		<< (original.getBrain() != assigned.getBrain() ? "yes" : "NO (shallow!)")
+		<< yesNo(original.getBrain() != assigned.getBrain())
 		<< std::endl;
 
-	assigned.getBrain()->ideas[0] = "The bag is mine";
+	assigned.getBrain()->ideas[0] = "Ronflex";
 	std::cout << "after editing the assigned one, original ideas[0]: "
 		<< original.getBrain()->ideas[0] << std::endl;
 	std::cout << std::endl;
@@ -114,9 +108,6 @@ static void	testWrongAnimal(void)
 
 int	main(void)
 {
-	std::cout << "=== An abstract base class ===" << std::endl;
-	testAbstract();
-
 	std::cout << std::endl << "=== An array of half Dogs, half Cats ==="
 		<< std::endl;
 	testZoo();

@@ -6,7 +6,7 @@
 /*   By: marudlof <marudlof@42.angouleme.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 14:05:45 by marudlof          #+#    #+#             */
-/*   Updated: 2026/09/10 18:00:57 by marudlof         ###   ########.fr       */
+/*   Updated: 2026/09/23 17:38:18 by marudlof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 #include <iostream>
 
 Character::Character(void) :
-	_name("nameless"), _floor(0), _floorSize(0), _floorCapacity(0)
+	_name("Darius"),
+	_floor(0),
+	_floorSize(0),
+	_floorCapacity(0)
 {
 	for (int idx = 0; idx < INVENTORY_SIZE; idx++)
 		this->_inventory[idx] = 0;
@@ -23,7 +26,10 @@ Character::Character(void) :
 }
 
 Character::Character(std::string const & name) :
-	_name(name), _floor(0), _floorSize(0), _floorCapacity(0)
+	_name(name),
+	_floor(0),
+	_floorSize(0),
+	_floorCapacity(0)
 {
 	for (int idx = 0; idx < INVENTORY_SIZE; idx++)
 		this->_inventory[idx] = 0;
@@ -32,8 +38,11 @@ Character::Character(std::string const & name) :
 }
 
 Character::Character(const Character& other) :
-	ICharacter(other), _name(other._name),
-	_floor(0), _floorSize(0), _floorCapacity(0)
+	ICharacter(other),
+	_name(other._name),
+	_floor(0),
+	_floorSize(0),
+	_floorCapacity(0)
 {
 	for (int idx = 0; idx < INVENTORY_SIZE; idx++)
 		this->_inventory[idx] = 0;
@@ -88,7 +97,9 @@ void	Character::_dropOnFloor(AMateria* m)
 		unsigned int	newCapacity;
 		AMateria**		newFloor;
 
-		newCapacity = (this->_floorCapacity ? this->_floorCapacity * 2 : 4);
+		newCapacity = 4;
+		if (this->_floorCapacity)
+			newCapacity = this->_floorCapacity * 2;
 		newFloor = new AMateria*[newCapacity];
 		for (unsigned int idx = 0; idx < this->_floorSize; idx++)
 			newFloor[idx] = this->_floor[idx];

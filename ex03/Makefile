@@ -3,23 +3,17 @@ NAME		= Materia
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRCS		= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp \
-			  MateriaSource.cpp
+SRCS		= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 all:		$(NAME)
 
-#$(NAME):	$(OBJS)
-#			$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
-
-#%.o:		%.cpp
-#			$(CXX) $(CXXFLAGS) -c $< -o $@
-
 $(NAME):	$(OBJS)
-			$(CXX) -o $(NAME) $(OBJS)
+			$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 %.o:		%.cpp
-			$(CXX) -c $< -o $@
+			$(CXX) $(CXXFLAGS) -c $< -o $@
+
 clean:
 			rm -f $(OBJS)
 
